@@ -1,6 +1,6 @@
 # Playing Cards
 
-This repository implements Single Shot MultiBox Detector (SSD) on a costume dataset. The objective is to detect playing cards' club and number.
+This repository implements Single Shot MultiBox Detector (SSD) on a costume dataset. The objective is to detect the cards' club and number.
 
 The SSD network is implemented with Pytorch library.
 
