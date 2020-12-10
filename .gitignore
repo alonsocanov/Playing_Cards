@@ -2,5 +2,5 @@
 .vscode
 .ipynb_checkpoints
 __pycache__
-data/models
+data/models/Cards*
 data/.floyddata
