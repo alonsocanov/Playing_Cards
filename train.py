@@ -23,13 +23,13 @@ def main():
     print('Availabele GPU:\n', device)
     ''' ----------------Learning parameters--------------'''
     # path to model, set None if dont want to save
-    model_path = None
+    model_path = 'data/models/cards_2.pth.tar'
     # path to checkpoint if there is one, set None if there isnt
-    checkpoint = None 
+    checkpoint = None # model_path
     # batch size
-    batch_size = 2
+    batch_size = 4
     # number of iterations to train
-    iterations = 12000
+    iterations = 15000
     # number of workers for loading data in the DataLoader
     workers = 4
     # print training status every __ batches
@@ -76,7 +76,7 @@ def main():
 
 
     epochs = iterations // (len(train_dataset) // batch_size)
-    epochs = 1
+    # epochs = 1
     print('Number of epochs:\n', epochs)
     decay_lr_at = [it // (len(train_dataset) // batch_size) for it in decay_lr_at]
     print('Decaying learning rate at epochs:\n', decay_lr_at)

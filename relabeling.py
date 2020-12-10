@@ -36,6 +36,7 @@ def relabelTxtFiles(files_path, actual_class, last_class):
             txt += ' '.join([str(actual_class[inv_last_class[int(label_id) + 1]]), x, y, w, h, '\n'])
         f.close()
         print(file)
+        # print(txt)
 
 
         f = open(file, 'w')

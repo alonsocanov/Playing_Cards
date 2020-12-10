@@ -1,5 +1,5 @@
 from torch import nn
-from utils import decimate, cxcy_to_xy, find_jaccard_overlap, cxcy_to_gcxgcy, xy_to_cxcy
+from utils import decimate, cxcy_to_xy, find_jaccard_overlap, cxcy_to_gcxgcy, xy_to_cxcy, gcxgcy_to_cxcy
 import torch.nn.functional as F
 from math import sqrt
 from itertools import product as product
