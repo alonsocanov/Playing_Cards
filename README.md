@@ -18,7 +18,7 @@ The files in the repository are
 ### Dataset
 For the dataset, standard Bicicle Playing Cards where used for training and validation sets. Images where taken from different lightning, rotation and size conditions.
 
-The images are stored in 'data/images', their anotations are in 'data/txt_cards' and the labels are in 'data/general_labels'.
+The images are stored in '''bash data/images''', their anotations are in 'data/txt_cards' and the labels are in 'data/general_labels'.
 
 ### Model
 The model's output is stored in 'data/models'.
