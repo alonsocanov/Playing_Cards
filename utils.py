@@ -7,6 +7,7 @@ import torchvision.transforms.functional as FT
 from torchvision import transforms
 import time
 from PIL import Image, ImageDraw, ExifTags
+import numpy as np
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
