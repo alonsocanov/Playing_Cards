@@ -33,20 +33,32 @@ def main():
     checkpoint = None # model_path
     # batch size
     batch_size = 4
-    # number of iterations to train
-    iterations = 15000
+    # number of epochs to train
+    epochs = 40
     # number of workers for loading data in the DataLoader
     workers = 4
     # print training status every __ batches
     print_freq = 50
-    lr = 1e-4  # learning rate
-    decay_lr_at = [8000, 10000]  # decay learning rate after these many iterations
-    decay_lr_to = 0.1  # decay learning rate to this fraction of the existing learning rate
-    momentum = 0.9  # momentum
-    weight_decay = 5e-4  # weight decay
-    grad_clip = None  # clip if gradients are exploding, which may happen at larger batch sizes (sometimes at 32) - you will recognize it by a sorting error in the MuliBox loss calculation
+    # learning rate
+    lr = 1e-4
+    # decay learning rate after these many iterations
+    decay_lr_at = [int(epochs * .7), int(epochs * .9)]
+    # decay learning rate to this fraction of the existing learning rate
+    decay_lr_to = 0.1
+    # momentum
+    momentum = 0.9
+    # weight decay
+    weight_decay = 5e-4
+    # clip if gradients are exploding, which may happen at larger batch sizes (sometimes at 32) - you will recognize it by a sorting error in the MuliBox loss calculation
+    grad_clip = None
 
     cudnn.benchmark = True
+
+    
+    print('Number of epochs:\n', epochs)
+    print('Batch size:\n', batch_size)
+    print('Learning Rate:\n', lr)
+    print('Decaying learning rate at epochs:\n', decay_lr_at)
 
     # Initialize model or load checkpoint
     if checkpoint is None:
@@ -79,13 +91,6 @@ def main():
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True,
                              num_workers=workers,  collate_fn=collate_fn, drop_last=True)
 
-
-    epochs = iterations // (len(train_dataset) // batch_size)
-    # epochs = 1
-    print('Number of epochs:\n', epochs)
-    decay_lr_at = [it // (len(train_dataset) // batch_size) for it in decay_lr_at]
-    print('Decaying learning rate at epochs:\n', decay_lr_at)
-    
 
      # Epochs
     for epoch in range(start_epoch, epochs):
