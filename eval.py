@@ -1,18 +1,19 @@
-from cards_class import CardsDataset, unpackBoundigBox, show, collate_fn
-from utils import *
+from cards_class import CardsDataset
+from utils import unpackBoundigBox, show, collate_fn, calculate_mAP, cxcy_to_xy
 from tqdm import tqdm
 from pprint import PrettyPrinter
+from torch.utils.data import DataLoader
 import torch
 
 # Good formatting when printing the APs for each class and mAP
 pp = PrettyPrinter()
 
 # Parameters
-data_folder = './'
+# data_folder = './'
 batch_size = 2
 workers = 4
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-checkpoint = './cards.pth.tar'
+checkpoint = './data/models/cards.pth.tar'
 
 # Load model checkpoint that is to be evaluated
 checkpoint = torch.load(checkpoint)
@@ -22,14 +23,18 @@ model = model.to(device)
 # Switch to eval mode
 model.eval()
 
-# Load test data
-dataset = CardsDataset('data/images', 'data/txt_labels', 'data/general_labels/classes.txt')
-test_dataset = dataset
-all_labels = dataset.invLabels
 
-test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=False,
-                                                num_workers=workers,  collate_fn=collate_fn,
-                                                drop_last=True)
+
+# Load test data
+images_path = 'data/images'
+anotations_path = 'data/txt_cards'
+labels_path = 'data/general_labels/classes.txt'
+# wrong it has to be different dataset
+test_dataset = CardsDataset(images_path, anotations_path, labels_path)
+all_labels = test_dataset.invLabels
+
+test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False,
+                        num_workers=workers, collate_fn=collate_fn, drop_last=True)
 
 
 def evaluate(test_loader, model, all_labels):

@@ -29,7 +29,7 @@ def main():
     original_image = original_image.convert('RGB')
     pred_img = detect(model=model, rev_label_map=rev_label_map, original_image=original_image, 
                     min_score=0.1, max_overlap=.5, top_k=5, device=device)
-    show(pred_img)
+    show(pred_img, factor=.1)
 
 
 if __name__ == '__main__':
