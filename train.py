@@ -10,7 +10,7 @@ import sys
 def main():
 
     images_path = 'data/images'
-    anotations_path = 'data/txt_cards'
+    anotations_path = 'data/anotations'
     labels_path = 'data/general_labels/classes.txt'
 
 
@@ -28,7 +28,7 @@ def main():
     print('Availabele GPU:\n', device)
     ''' ----------------Learning parameters--------------'''
     # path to model, set None if dont want to save
-    model_path = 'data/models/cards_2.pth.tar'
+    model_path = None #'data/models/cards_2.pth.tar'
     # path to checkpoint if there is one, set None if there isnt
     checkpoint = None # model_path
     # batch size
