@@ -9,7 +9,12 @@ import sys
 
 def main():
 
-    train_dataset = CardsDataset('data/images', 'data/txt_cards', 'data/general_labels/classes.txt')
+    images_path = 'data/images'
+    anotations_path = 'data/txt_cards'
+    labels_path = 'data/general_labels/classes.txt'
+
+
+    train_dataset = CardsDataset(images_path, anotations_path, labels_path)
     print('Dataset lenght:\n', len(train_dataset))
     num_classes = len(list(train_dataset.labels.keys()))
     print('Classes:\n', train_dataset.labels)

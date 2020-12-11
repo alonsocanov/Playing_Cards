@@ -4,3 +4,6 @@
 __pycache__
 data/models/Cards*
 data/.floyddata
+.floydexpt
+.floydignore
+floyd.yml
