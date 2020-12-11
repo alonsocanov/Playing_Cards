@@ -3,9 +3,9 @@
 .ipynb_checkpoints
 __pycache__
 data/models/Cards*
-data/anotations_2
-data/images_2
-data/.floyddata
+data/anotations*
+data/images*
+*.floyddata
 .floydexpt
 .floydignore
 floyd.yml

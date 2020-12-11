@@ -6,12 +6,28 @@ from torch.utils.data import DataLoader
 from model import SSD300, MultiBoxLoss
 from utils import unpackBoundigBox, showBatch, collate_fn, train, save_checkpoint, adjust_learning_rate
 import sys
+import os
 
 def main():
+    file_dir = os.path.dirname(os.path.realpath(__file__))
+    if '/home/alonso/' in file_dir:
+        images_path = '/home/alonso/Developer/datasets/playing_cards/images'
+        anotations_path = '/home/alonso/Developer/datasets/playing_cards/anotations'
+        labels_path = '/home/alonso/Developer/playing_cards/classes.txt'
+    elif '/Users/acano/' in file_dir:
+        images_path = '/Volumes/Cano/datasets/playing_cards/images'
+        anotations_path = '/Volumes/Cano/datasets/playing_cards/anotations'
+        labels_path = '/Volumes/Cano/datasets/playing_cards/classes.txt'
+    elif '/home/acano/' in file_dir:
+        images_path = '/home/acano/Developer/datasets/playing_cards/images'
+        anotations_path = '/home/acano/Developer/datasets/playing_cards/anotations'
+        labels_path = '/home/acano/Developer/playing_cards/classes.txt'
+    else:
+        images_path = 'dataset/playing_cards/images'
+        anotations_path = 'dataset/playing_cards/anotations'
+        labels_path = 'dataset/playing_cards/classes.txt'
 
-    images_path = 'data/images'
-    anotations_path = 'data/anotations'
-    labels_path = 'data/general_labels/classes.txt'
+
 
 
     train_dataset = CardsDataset(images_path, anotations_path, labels_path)
