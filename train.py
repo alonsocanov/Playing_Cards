@@ -13,19 +13,23 @@ def main():
     if '/home/alonso/' in file_dir:
         images_path = '/home/alonso/Developer/datasets/playing_cards/images'
         anotations_path = '/home/alonso/Developer/datasets/playing_cards/anotations'
-        labels_path = '/home/alonso/Developer/playing_cards/classes.txt'
+        labels_path = '/home/alonso/Developer/datasets/playing_cards/classes.txt'
+        model_path = '/home/alonso/Developer/datasets/playing_cards/models/cards_2.pth.tar'
     elif '/Users/acano/' in file_dir:
         images_path = '/Volumes/Cano/datasets/playing_cards/images'
         anotations_path = '/Volumes/Cano/datasets/playing_cards/anotations'
         labels_path = '/Volumes/Cano/datasets/playing_cards/classes.txt'
+        model_path = '/Volumes/Cano/datasets/playing_cards/models/cards_2.pth.tar'
     elif '/home/acano/' in file_dir:
         images_path = '/home/acano/Developer/datasets/playing_cards/images'
         anotations_path = '/home/acano/Developer/datasets/playing_cards/anotations'
         labels_path = '/home/acano/Developer/playing_cards/classes.txt'
+        model_path = '/home/acano/Developer/datasets/playing_cards/models/cards_2.pth.tar'
     else:
         images_path = 'dataset/playing_cards/images'
         anotations_path = 'dataset/playing_cards/anotations'
         labels_path = 'dataset/playing_cards/classes.txt'
+        model_path = 'datasets/playing_cards/models/cards_2.pth.tar'
 
 
 
@@ -43,8 +47,6 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print('Availabele GPU:\n', device)
     ''' ----------------Learning parameters--------------'''
-    # path to model, set None if dont want to save
-    model_path = None #'data/models/cards_2.pth.tar'
     # path to checkpoint if there is one, set None if there isnt
     checkpoint = None # model_path
     # batch size
