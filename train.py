@@ -25,6 +25,11 @@ def main():
         anotations_path = '/home/acano/Developer/datasets/playing_cards/anotations'
         labels_path = '/home/acano/Developer/playing_cards/classes.txt'
         model_path = '/home/acano/Developer/datasets/playing_cards/models/cards_2.pth.tar'
+    elif '/floyd/home' in file_dir:
+        images_path = '/floyd/input/cards/images'
+        anotations_path = '/floyd/input/cards/anotations'
+        labels_path = '/floyd/input/cards/general_labels/classes.txt'
+        model_path = 'cards_2.pth.tar'
     else:
         images_path = 'dataset/playing_cards/images'
         anotations_path = 'dataset/playing_cards/anotations'
